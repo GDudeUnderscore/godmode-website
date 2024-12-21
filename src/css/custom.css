@@ -1,0 +1,114 @@
+body {
+    background: #09090b !important;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.hero {
+    /* put in center of screen ignoring previous elements */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 50vh !important;
+}
+
+/* shrink the carousel */
+.carousel {
+    max-width: 80% !important;
+    overflow: scroll !important;
+    display: flex !important;
+    align-items: stretch !important; /* Change this line */
+}
+
+.carousel > .card {
+    margin: 5px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 4px !important;
+    padding: 5px !important;
+}
+
+.blessing {
+    border: 1px solid limegreen !important;
+
+}
+
+.button {
+    color: white;
+    background-color: #024f16 !important;
+}
+
+.disaster {
+    border: 1px solid red !important;
+}
+
+/* remove the scrollbar */
+::-webkit-scrollbar {
+    display: none !important;
+}
+
+input {
+    color: white !important;
+}
+
+:root {
+    --base-1: #0f110f;
+    --base-2: #171917;
+    --base-3: #1f231f;
+    --base-4: #252a25;
+    --base-5: #2c322c;
+    --base-6: #363b36;
+    --base-7: #434943;
+    --base-8: #5a625a;
+    --base-9: #666f66;
+    --base-10: #747d74;
+    --base-11: #adb5ad;
+    --base-12: #eceeec;
+    --base-a1: #00000000;
+    --base-a2: #f3f4f309;
+    --base-a3: #e9f7e914;
+    --base-a4: #f3fef41b;
+    --base-a5: #e5fbf424;
+    --base-a6: #edfffa2d;
+    --base-a7: #edfff83c;
+    --base-a8: #e9fff957;
+    --base-a9: #e9fffa65;
+    --base-a10: #ecfffb74;
+    --base-a11: #f4fffcB0;
+    --base-a12: #fdfffded;
+    --base-contrast: #fff;
+    --base-background: #0f110f;
+    --brand-1: #0d160f;
+    --brand-2: #112014;
+    --brand-3: #0f3819;
+    --brand-4: #024f16;
+    --brand-5: #075e1e;
+    --brand-6: #23873c;
+    --brand-7: #23873c;
+    --brand-8: #2cae4d;
+    --brand-9: #0f5;
+    --brand-10: #00f147;
+    --brand-11: #73ff99;
+    --brand-12: #c9ffdb;
+    --brand-a1: #00e60006;
+    --brand-a2: #1ff23e11;
+    --brand-a3: #0afe422a;
+    --brand-a4: #00fd2443;
+    --brand-a5: #00fe3953;
+    --brand-a6: #1dff5665;
+    --brand-a7: #37fd678f;
+    --brand-a8: #3bfe6ba9;
+    --brand-a9: #00ff55;
+    --brand-a10: #00ff4af0;
+    --brand-a11: #73ff99;
+    --brand-a12: #c9ffd8;
+    --brand-contrast: #fff;
+    --brand-background: #0f110f;
+    --color-scheme: dark;
+}
+
+/* add margin to the bottom of a section */
+section {
+    margin-bottom: 2rem;
+}

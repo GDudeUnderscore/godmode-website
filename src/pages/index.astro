@@ -1,0 +1,101 @@
+---
+import Section from "fulldev-ui/components/Section.astro";
+import Layout from "../layouts/Layout.astro";
+import Hero from "fulldev-ui/blocks/Hero.astro";
+import Card from "fulldev-ui/components/Card.astro";
+import fs from "node:fs";
+import Carousel from "fulldev-ui/components/Carousel.astro";
+import { Image } from "astro:assets";
+
+const events = fs.readFileSync("src/assets/message.txt", "utf-8").split("|").map(event => {
+	const [name, id, disasterString, unFormattedDescription, item] = event.split("^");
+	const disaster = disasterString === "true";
+	const description = unFormattedDescription.replace("/", " ");
+	return { name, id, disaster, description, item };
+})
+
+const ITEM_IMAGE_ENDPOINT = "https://raw.githubusercontent.com/GDudeUnderscore/item-icons/refs/heads/main/icons/minecraft__{item}.png";
+
+
+---
+
+<Layout>
+	<Hero
+		badge="Server IP: gdude.dev"
+		heading="Welcome to GDude.dev"
+		text="Purchase products to show support for the server."
+		buttons={[
+			{
+				text: "Shop now",
+				href: "https://store.gdude.dev/category/467881"
+			},
+			{ text: "Copy IP", href: "COPY IP" },
+		]}
+	/>
+
+	<Section align="center" justify="center">
+		<Card
+			title="Exclusive Cosmetics with Ranks"
+			description="Unlock unique cosmetics by purchasing ranks. Customize your in-game look and stand out from the crowd!"
+		/>
+		<Card
+			title="The Disaster Pass"
+			description="Get access to exclusive features and rewards with the Disaster Pass. Survive disasters and earn amazing prizes!"
+		/>
+		<Card
+			title="About"
+			description="This is a Minecraft server focused on surviving random disasters. Players can purchase ranks and exclusive products to enhance their experience, unlock cosmetics, and support the server and its development team. Every purchase helps us improve and add new features to the server, ensuring an exciting and engaging experience for all players!"
+		/>
+	</Section>
+
+	<Section
+		title="Events"
+		align="center"
+		justify="center"
+	>
+		<Carousel>
+			{events.map(event => {
+				return <Card
+					title={event.name}
+					description={event.description}
+					class:list={event.disaster ? "disaster" : "blessing"}
+				>
+					<Image style="image-rendering: pixelated;" width="64" height="64" alt={event.item} src={ITEM_IMAGE_ENDPOINT.replace("{item}", event.item)}/>
+				</Card>
+			})}
+		</Carousel>
+	</Section>
+
+	
+</Layout>
+
+<script>
+
+	import { animate } from "motion";
+	// get button with content "Copy IP"
+	const copyIpButton = document.querySelector('a[href="COPY IP"]');
+
+	copyIpButton?.addEventListener("click", (e) => {
+		e.preventDefault();
+		navigator.clipboard.writeText("gdude.dev");
+		alert("Copied IP to clipboard!");
+	});
+
+	const cards = Array.from(document.querySelectorAll(".card")) as HTMLElement[];
+	for (const card of cards) {
+
+		// set opacity to 0.8
+		card.style.opacity = "0.5";
+
+		card.addEventListener("mouseover", () => {
+			animate(card, { scale: 1.1, opacity: 1 }, { type: "spring", stiffness: 160, damping: 25 });
+		});
+
+		card.addEventListener("mouseout", () => {
+			animate(card, { scale: 1, opacity: 0.5 }, { type: "spring", stiffness: 160, damping: 25 });
+		});
+	}
+
+	const heroTitle = document.querySelector(".hero h1") as HTMLElement;
+	animate(heroTitle, { scale: 1.5 }, { type: "spring", stiffness: 160, damping: 25 });
+</script>
