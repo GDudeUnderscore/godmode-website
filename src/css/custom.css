@@ -11,26 +11,22 @@ body {
     height: 50vh ;
 }
 
-/* shrink the carousel */
-.carousel {
-    max-width: 80% ;
-    overflow: scroll ;
-    display: flex ;
-    align-items: stretch ; /* Change this line */
+.masonry {
+    max-width: 80%;
 }
 
-.carousel > .card {
-    margin: 5px ;
-    display: flex ;
-    flex-direction: column ;
-    justify-content: center ;
-    align-items: center ;
+.masonry > .card {
     border-radius: 4px ;
-    padding: 5px ;
+    padding: 5px;
+    background: #09090b;
+}
+
+.masonry > .card img {
+    color: white;
 }
 
 .blessing {
-    border: 1px solid limegreen ;
+    border: 5px solid limegreen ;
 
 }
 
@@ -40,7 +36,7 @@ body {
 }
 
 .disaster {
-    border: 1px solid red ;
+    border: 5px solid red ;
 }
 
 /* remove the scrollbar */
