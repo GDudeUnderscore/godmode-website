@@ -2,6 +2,9 @@ import { defineConfig } from "astro/config";
 import fulldev from "fulldev-ui/integration";
 
 export default defineConfig({
+    site: "https://gdudeunderscore.github.io",
+    base: "website",
+    compressHTML: true,
     integrations: [fulldev({
         css: "/src/css/custom.css",
         colors: {
