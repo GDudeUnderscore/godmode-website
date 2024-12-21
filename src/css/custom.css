@@ -1,55 +1,55 @@
 body {
-    background: #09090b !important;
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    background: #09090b ;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 }
 
 .hero {
     /* put in center of screen ignoring previous elements */
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    height: 50vh !important;
+    display: flex ;
+    justify-content: center ;
+    align-items: center ;
+    height: 50vh ;
 }
 
 /* shrink the carousel */
 .carousel {
-    max-width: 80% !important;
-    overflow: scroll !important;
-    display: flex !important;
-    align-items: stretch !important; /* Change this line */
+    max-width: 80% ;
+    overflow: scroll ;
+    display: flex ;
+    align-items: stretch ; /* Change this line */
 }
 
 .carousel > .card {
-    margin: 5px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    border-radius: 4px !important;
-    padding: 5px !important;
+    margin: 5px ;
+    display: flex ;
+    flex-direction: column ;
+    justify-content: center ;
+    align-items: center ;
+    border-radius: 4px ;
+    padding: 5px ;
 }
 
 .blessing {
-    border: 1px solid limegreen !important;
+    border: 1px solid limegreen ;
 
 }
 
 .button {
     color: white;
-    background-color: #024f16 !important;
+    background-color: #024f16 ;
 }
 
 .disaster {
-    border: 1px solid red !important;
+    border: 1px solid red ;
 }
 
 /* remove the scrollbar */
 ::-webkit-scrollbar {
-    display: none !important;
+    display: none ;
 }
 
 input {
-    color: white !important;
+    color: white ;
 }
 
 :root {
