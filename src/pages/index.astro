@@ -98,4 +98,11 @@ const ITEM_IMAGE_ENDPOINT = "https://raw.githubusercontent.com/GDudeUnderscore/i
 
 	const heroTitle = document.querySelector(".hero h1") as HTMLElement;
 	animate(heroTitle, { scale: 1.5 }, { type: "spring", stiffness: 160, damping: 25 });
+
+	const shopButton = document.querySelector('a[href="https://store.gdude.dev/category/467881"]') as HTMLElement;
+	shopButton.addEventListener("click", (e) => {
+		e.preventDefault();
+		// send a message to the parent window
+		window.parent.postMessage("open-shop", "*");
+	});
 </script>
