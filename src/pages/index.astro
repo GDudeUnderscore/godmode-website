@@ -7,16 +7,19 @@ import fs from "node:fs";
 import { Image } from "astro:assets";
 import Masonry from "fulldev-ui/components/Masonry.astro";
 
-const events = fs.readFileSync("src/assets/message.txt", "utf-8").split("|").map(event => {
-	const [name, id, disasterString, unFormattedDescription, item] = event.split("^");
-	const disaster = disasterString === "true";
-	const description = unFormattedDescription.replace("/\//g", " ");
-	return { name, id, disaster, description, item };
-})
+const events = fs
+	.readFileSync("src/assets/message.txt", "utf-8")
+	.split("|")
+	.map((event) => {
+		const [name, id, disasterString, unFormattedDescription, item] =
+			event.split("^");
+		const disaster = disasterString === "true";
+		const description = unFormattedDescription.replace("///g", " ");
+		return { name, id, disaster, description, item };
+	});
 
-const ITEM_IMAGE_ENDPOINT = "https://raw.githubusercontent.com/GDudeUnderscore/item-icons/refs/heads/main/icons/minecraft__{item}.png";
-
-
+const ITEM_IMAGE_ENDPOINT =
+	"https://raw.githubusercontent.com/GDudeUnderscore/item-icons/refs/heads/main/icons/minecraft__{item}.png";
 ---
 
 <Layout>
@@ -27,7 +30,7 @@ const ITEM_IMAGE_ENDPOINT = "https://raw.githubusercontent.com/GDudeUnderscore/i
 		buttons={[
 			{
 				text: "Shop now",
-				href: "https://store.gdude.dev/category/467881"
+				href: "https://store.gdude.dev/category/467881",
 			},
 			{ text: "Copy IP", href: "COPY IP" },
 		]}
@@ -48,30 +51,76 @@ const ITEM_IMAGE_ENDPOINT = "https://raw.githubusercontent.com/GDudeUnderscore/i
 		/>
 	</Section>
 
-	<Section
-		title="Events"
-		align="center"
-		justify="center"
-	>
+	<Section title="Events" align="center" justify="center">
 		<Masonry>
-			{events.map(event => {
-				return <Card
-					title={event.name}
-					description={event.description}
-					class:list={event.disaster ? "disaster" : "blessing"}
-					align="center"
-					justify="center"
-				>
-					<Image style="image-rendering: pixelated;" width="64" height="64" alt={event.item} src={ITEM_IMAGE_ENDPOINT.replace("{item}", event.item)} onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAJ1BMVEUAAAD/M8yAGmb/NNDxM8muI47/NdT/Ntj3NNCMHHGoI46vJJGlI4wivgcaAAABAklEQVR4nO3T2xGAIBRDwSsg+Oq/XqswP+7pYGeSqnBt9C1aGkhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISPit8FgzWrVw53Xv0WpkO574anq2dceF2dtvcyckJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQk/JPwBVNtcP6d2dvHAAAAAElFTkSuQmCC'"/>
-				</Card>
-			})}
+			{
+				events.map((event) => {
+					return (
+						<Card
+							title={event.name}
+							description={event.description}
+							class:list={
+								event.disaster ? "disaster" : "blessing"
+							}
+							align="center"
+							justify="center"
+						>
+							<Image
+								style="image-rendering: pixelated;"
+								width="64"
+								height="64"
+								alt={event.item}
+								src={ITEM_IMAGE_ENDPOINT.replace(
+									"{item}",
+									event.item,
+								)}
+								onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAJ1BMVEUAAAD/M8yAGmb/NNDxM8muI47/NdT/Ntj3NNCMHHGoI46vJJGlI4wivgcaAAABAklEQVR4nO3T2xGAIBRDwSsg+Oq/XqswP+7pYGeSqnBt9C1aGkhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISPit8FgzWrVw53Xv0WpkO574anq2dceF2dtvcyckJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQk/JPwBVNtcP6d2dvHAAAAAElFTkSuQmCC'"
+							/>
+						</Card>
+					);
+				})
+			}
 		</Masonry>
 	</Section>
-
-	
 </Layout>
 
 <script>
+	function smallCaps(text: string): string {
+		const dictionary: { [key: string]: string } = {
+			a: "ᴀ",
+			b: "ʙ",
+			c: "ᴄ",
+			d: "ᴅ",
+			e: "ᴇ",
+			f: "ꜰ",
+			g: "ɢ",
+			h: "ʜ",
+			i: "ɪ",
+			j: "ᴊ",
+			k: "ᴋ",
+			l: "ʟ",
+			m: "ᴍ",
+			n: "ɴ",
+			p: "ᴘ",
+			q: "ǫ",
+			r: "ʀ",
+			t: "ᴛ",
+			w: "ᴡ",
+			y: "ʏ",
+		};
+
+		return text
+			.toLowerCase()
+			.split("")
+			.map((char) => {
+				return dictionary[char as keyof typeof dictionary] || char;
+			})
+			.join("");
+	}
+
+	function convertElementToSmallCaps(element: HTMLElement) {
+		element.textContent = smallCaps(element.textContent ?? "");
+	}
 
 	import { animate } from "motion";
 	// get button with content "Copy IP"
@@ -83,25 +132,41 @@ const ITEM_IMAGE_ENDPOINT = "https://raw.githubusercontent.com/GDudeUnderscore/i
 		alert("Copied IP to clipboard!");
 	});
 
-	const cards = Array.from(document.querySelectorAll(".card")) as HTMLElement[];
+	const cards = Array.from(
+		document.querySelectorAll(".card"),
+	) as HTMLElement[];
 	for (const card of cards) {
-
 		// set opacity to 0.8
 		card.style.opacity = "0.5";
 
 		card.addEventListener("mouseover", () => {
-			animate(card, { scale: 1.1, opacity: 1 }, { type: "spring", stiffness: 160, damping: 25 });
+			animate(
+				card,
+				{ scale: 1.1, opacity: 1 },
+				{ type: "spring", stiffness: 160, damping: 25 },
+			);
 		});
 
 		card.addEventListener("mouseout", () => {
-			animate(card, { scale: 1, opacity: 0.5 }, { type: "spring", stiffness: 160, damping: 25 });
+			animate(
+				card,
+				{ scale: 1, opacity: 0.5 },
+				{ type: "spring", stiffness: 160, damping: 25 },
+			);
 		});
 	}
 
 	const heroTitle = document.querySelector(".hero h1") as HTMLElement;
-	animate(heroTitle, { scale: 1.5 }, { type: "spring", stiffness: 160, damping: 25 });
+	// convertElementToSmallCaps(heroTitle);
+	animate(
+		heroTitle,
+		{ scale: 1.5 },
+		{ type: "spring", stiffness: 160, damping: 25 },
+	);
 
-	const shopButton = document.querySelector('a[href="https://store.gdude.dev/category/467881"]') as HTMLElement;
+	const shopButton = document.querySelector(
+		'a[href="https://store.gdude.dev/category/467881"]',
+	) as HTMLElement;
 	shopButton.addEventListener("click", (e) => {
 		e.preventDefault();
 		// send a message to the parent window
