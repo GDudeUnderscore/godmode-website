@@ -1,9 +1,11 @@
 import { defineConfig } from "astro/config";
 import fulldev from "fulldev-ui/integration";
 
+import solidJs from "@astrojs/solid-js";
+
 export default defineConfig({
     site: "https://gdudeunderscore.github.io",
-    base: "website",
+    base: "godmode-website",
     compressHTML: true,
     integrations: [fulldev({
         css: "/src/css/custom.css",
@@ -20,5 +22,5 @@ export default defineConfig({
                 brand: "#F50",
             },
         },
-    })]
+    }), solidJs()]
 });
